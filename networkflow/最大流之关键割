@@ -1,0 +1,53 @@
+关键割：
+	如果增加的该边的流量，那么网络流的流量会增加
+	注意一个初学者常犯的错误：
+	满流的边不一定就是关键割，所以floodfill or dfs的时候要遍历正向和反向边
+	
+算法：
+方法1：暴力的dfs
+	这里思路直观，但是效率低端。
+
+方法2：
+	1.网络流一次后标记所有的节点为未定义状态
+	2.从残余网络中的s做一次bfs标记未定义节点为s集合
+	3.从t中做一次bfs标记所有未定义节点位t集合
+	4.枚举所有的满流且一个点在s集合一个点在t集合的边（网络流中的正向边），增加流量看是否可以从s到t
+方法3：
+	1.网络流一次后标记所有的节点为未定义状态
+	2.从残留网络中的s做一次bfs标记为s集合
+	3.从残留网络中建立反图！！从t bfs一次标记所有节点位t集合（遇到的必定为未定义的）
+	4.枚举所有的且一个点在s集合一个点在t集合的边的满流的边（网络流中的正向边）就是关键割
+方法3求关键割代码
+int cnt, reachs[V]
+void floodfill(int beg, int *reach, Edges *vfrom[],int clr)
+{
+	queue<int> q;
+	q.push(beg);
+	reach[beg] = clr;
+	while (!q.empty())
+	{
+		beg = q.front();
+		q.pop();
+		for (Edges *i = vfrom[beg]; i != NULL; i = i->next)
+		{
+			if (!reach[i->vto] && i->ecap )
+			{
+				reach[i->vto] = clr;
+				q.push(i->vto);
+			}
+		}
+	}
+}
+maxflow.maxflowsap(n, s, t);
+firststart();
+for(Edges *i = pool;i < topp;i++)
+	addedge(i->vto,i->vfrom,i->ecap,i->id);//做反图
+memset(reachs, 0, sizeof(reachs));
+floodfill(s, reachs, vfrom,1);
+floodfill(t, reacht, rg,2);
+cnt = INF;
+for(Edges *i = pool;i < topp;i += 2)
+{
+	if(!i->ecap && reachs[i->vfrom]  == 1&& reacht[i->vto] == 2)
+		cnt = min(cnt,i->id);
+}//求最小编号的关键割

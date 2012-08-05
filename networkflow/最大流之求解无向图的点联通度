@@ -1,0 +1,34 @@
+点联通度：在图中去掉多少个点，使图边的不联通
+算法：
+	拆点：把一个点v拆成一个v" 一个v',然后枚举源点和汇点做n^2网络流
+	从v" 到v'连容量为1 原图上的边<u,v> 在新图上构建一个 <u',v">容量为INF
+	注意：一定要源点和汇点都枚举，不然如果点割集在任意选取的源点和汇点上会得到错误的结果
+	取每次网络流的最小值，如果最后的流量为INF那么原图为完全图ans = n;
+	复杂度O(n^5)网络流，敢写就有奇迹！！！！！
+代码：
+int ans = INF;
+for (int j = 0; j < n; j++)
+{
+    for (int k = j + 1; k < n; k++)
+    {
+        maxflow.firststart();
+        for (int i = 0; i < n; i++)
+        {
+            maxflow.addedge(i * 2, i * 2 + 1, 1);
+            maxflow.addedge(i * 2 + 1, i * 2, 0);
+        }
+        for (int i = 0; i < m; i++)
+        {
+            maxflow.addedge(vfrom[i] * 2 + 1, vto[i] * 2, INF);
+            maxflow.addedge(vto[i] * 2, vfrom[i] * 2 + 1, 0);
+            maxflow.addedge(vto[i] * 2 + 1, vfrom[i] * 2, INF);
+            maxflow.addedge(vfrom[i] * 2, vto[i] * 2 + 1, 0);
+        }
+        s = j * 2 + 1, t = k * 2;
+        ans = min(ans, maxflow.maxflowsap(n * 2, s, t));
+    }
+}
+if (ans == INF)
+    printf("%d\n", n);
+else
+    printf("%d\n", ans);

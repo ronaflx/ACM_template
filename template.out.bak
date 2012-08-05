@@ -1,0 +1,70 @@
+\BOOKMARK [1][-]{section.1}{string}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{ACAutoMachine}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{KMP}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{ELFhash}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Minimum Representation}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.5}{C++replaceAll}{section.1}% 6
+\BOOKMARK [2][-]{subsection.1.6}{Base64}{section.1}% 7
+\BOOKMARK [2][-]{subsection.1.7}{Trie Tree}{section.1}% 8
+\BOOKMARK [2][-]{subsection.1.8}{Suffix Array}{section.1}% 9
+\BOOKMARK [1][-]{section.2}{data structure}{}% 10
+\BOOKMARK [2][-]{subsection.2.1}{AVL}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.2}{Splay}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.3}{LCA\(RMQ\)}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.4}{leftist Tree}{section.2}% 14
+\BOOKMARK [2][-]{subsection.2.5}{partition Tree}{section.2}% 15
+\BOOKMARK [2][-]{subsection.2.6}{tree Representation}{section.2}% 16
+\BOOKMARK [2][-]{subsection.2.7}{UFS}{section.2}% 17
+\BOOKMARK [2][-]{subsection.2.8}{BIT\137findK}{section.2}% 18
+\BOOKMARK [2][-]{subsection.2.9}{UFS\137value}{section.2}% 19
+\BOOKMARK [2][-]{subsection.2.10}{3D\137BIT}{section.2}% 20
+\BOOKMARK [2][-]{subsection.2.11}{DLX\(exact\)}{section.2}% 21
+\BOOKMARK [2][-]{subsection.2.12}{DLX\(indistinct\)}{section.2}% 22
+\BOOKMARK [1][-]{section.3}{graph}{}% 23
+\BOOKMARK [2][-]{subsection.3.1}{BBC}{section.3}% 24
+\BOOKMARK [2][-]{subsection.3.2}{EBBC}{section.3}% 25
+\BOOKMARK [2][-]{subsection.3.3}{scc}{section.3}% 26
+\BOOKMARK [2][-]{subsection.3.4}{2-sat}{section.3}% 27
+\BOOKMARK [2][-]{subsection.3.5}{Hopcroft-Karp}{section.3}% 28
+\BOOKMARK [2][-]{subsection.3.6}{hungary}{section.3}% 29
+\BOOKMARK [2][-]{subsection.3.7}{KM}{section.3}% 30
+\BOOKMARK [2][-]{subsection.3.8}{stableMarriage}{section.3}% 31
+\BOOKMARK [2][-]{subsection.3.9}{maximal Clique}{section.3}% 32
+\BOOKMARK [2][-]{subsection.3.10}{MaxClique}{section.3}% 33
+\BOOKMARK [2][-]{subsection.3.11}{minimum Cut}{section.3}% 34
+\BOOKMARK [2][-]{subsection.3.12}{LCA}{section.3}% 35
+\BOOKMARK [2][-]{subsection.3.13}{bellman-ford}{section.3}% 36
+\BOOKMARK [2][-]{subsection.3.14}{Eular-fleury}{section.3}% 37
+\BOOKMARK [2][-]{subsection.3.15}{k-shortest-path\(with cycle\)}{section.3}% 38
+\BOOKMARK [2][-]{subsection.3.16}{secondSP}{section.3}% 39
+\BOOKMARK [2][-]{subsection.3.17}{SPFA}{section.3}% 40
+\BOOKMARK [2][-]{subsection.3.18}{Best Radio Spanning Tree}{section.3}% 41
+\BOOKMARK [2][-]{subsection.3.19}{Count Spanning Tree}{section.3}% 42
+\BOOKMARK [2][-]{subsection.3.20}{Degree Limited Spanning Tree}{section.3}% 43
+\BOOKMARK [2][-]{subsection.3.21}{second MST}{section.3}% 44
+\BOOKMARK [2][-]{subsection.3.22}{minimum direct tree\(matrix\)}{section.3}% 45
+\BOOKMARK [2][-]{subsection.3.23}{minimum direct tree\(pool\)}{section.3}% 46
+\BOOKMARK [2][-]{subsection.3.24}{maxflow}{section.3}% 47
+\BOOKMARK [2][-]{subsection.3.25}{mincostflow}{section.3}% 48
+\BOOKMARK [1][-]{section.4}{computational geometry}{}% 49
+\BOOKMARK [2][-]{subsection.4.1}{geometry}{section.4}% 50
+\BOOKMARK [2][-]{subsection.4.2}{3D-Convex}{section.4}% 51
+\BOOKMARK [1][-]{section.5}{math}{}% 52
+\BOOKMARK [2][-]{subsection.5.1}{cantor extend}{section.5}% 53
+\BOOKMARK [2][-]{subsection.5.2}{eular function}{section.5}% 54
+\BOOKMARK [2][-]{subsection.5.3}{Matrix}{section.5}% 55
+\BOOKMARK [2][-]{subsection.5.4}{miller rabin}{section.5}% 56
+\BOOKMARK [2][-]{subsection.5.5}{pollard rho}{section.5}% 57
+\BOOKMARK [2][-]{subsection.5.6}{linearModularSystem}{section.5}% 58
+\BOOKMARK [2][-]{subsection.5.7}{Eratosthenes}{section.5}% 59
+\BOOKMARK [1][-]{section.6}{dynamic Programming}{}% 60
+\BOOKMARK [2][-]{subsection.6.1}{DFA DP}{section.6}% 61
+\BOOKMARK [2][-]{subsection.6.2}{mask \046 connection}{section.6}% 62
+\BOOKMARK [2][-]{subsection.6.3}{RMQ}{section.6}% 63
+\BOOKMARK [2][-]{subsection.6.4}{HOJ2973}{section.6}% 64
+\BOOKMARK [2][-]{subsection.6.5}{slope}{section.6}% 65
+\BOOKMARK [1][-]{section.7}{other}{}% 66
+\BOOKMARK [2][-]{subsection.7.1}{Á¬Í¨ÐÔDP}{section.7}% 67
+\BOOKMARK [2][-]{subsection.7.2}{input stream}{section.7}% 68
+\BOOKMARK [2][-]{subsection.7.3}{splay}{section.7}% 69
+\BOOKMARK [2][-]{subsection.7.4}{network with low bound}{section.7}% 70

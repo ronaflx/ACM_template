@@ -1,0 +1,108 @@
+/*
+FF牌模板又帅气又好用
+trie树动态分配内存版
+膜拜FF
+*/
+#include <cstring>
+#include <iostream>
+using namespace std;
+
+class node
+{
+public:
+    static const int MAXA = 27;
+    node* branch[ MAXA ];
+    char* data;
+    node() : data(NULL)
+    {
+        memset(branch, 0, sizeof (branch));
+    }
+    ~node()
+    {
+        for (int i = 0; i < MAXA; ++i)
+        {
+            if (branch [ i ] != NULL)
+                delete branch[ i ];
+        }
+        delete []data;
+    }
+};
+
+class trie
+{
+private:
+    node* root;
+public:
+
+    trie() : root(new node)
+    {
+    }
+
+    ~trie()
+    {
+        delete root;
+    }
+    void insert(char*, char*);
+    void find(char*, char*) const;
+};
+
+void trie::insert(char* word, char* entry)
+{
+    node* location = root;
+    int i;
+    for (; *word; ++word)
+    {
+        i = *word - 'a';
+        if (location->branch[ i ] == NULL)
+        {
+            location->branch[ i ] = new node;
+        }
+        location = location->branch[ i ];
+    }
+    location->data = new char[ strlen(entry) + 1 ];
+    strcpy(location->data, entry);
+}
+
+void trie::find(char* word, char* entry) const
+{
+    node* location = root;
+    int i;
+    for (; *word; ++word)
+    {
+        i = *word - 'a';
+        if (location->branch[ i ] == NULL)
+        {
+            strcpy(entry, "eh");
+            return;
+        }
+        location = location->branch[ i ];
+    }
+    if (location->data != NULL)
+        strcpy(entry, location->data);
+    else
+        strcpy(entry, "eh");
+}
+
+int main()
+{
+    trie tries;
+    char str[100], str1[20], str2[20];
+    while (cin.getline(str, 100, '\n'))
+    {
+        if (str[0] == '\0')
+            break;
+        int i;
+        for (i = 0; str[i] != ' '; i++);
+        strncpy(str1, str, i);
+        str1[i] = '\0';
+        strcpy(str2, str + i + 1);
+        tries.insert(str2, str1);
+    }
+    while (scanf("%s", &str2) == 1)
+    {
+        tries.find(str2, str1);
+        printf("%s\n", str1);
+    }
+    return 0;
+}
+

@@ -1,0 +1,31 @@
+无源无汇上下界可行流:
+设M(i)为流入结点i的下界总和减去流出i的下界总和。
+设一附加源S，汇T，则可以令C’(S, i) = M(i)。
+如果M(i)是负数，那么有C’(i, T0) = -M(i)。
+对于其他的边有C’(u, v) = C(u, v) - B(u, v)
+for(int i = 0;i < m;i++)
+{
+    scanf("%d %d %d %d",&vfrom,&vto,&low[i],&tmpcap);
+    maxflow.addedge(vfrom,vto,tmpcap - low[i]);
+    maxflow.addedge(vto,vfrom,0);
+    b[vto] += low[i];
+    b[vfrom] -= low[i];
+}
+for (int i = 1; i <= n; i++)
+{
+    if (b[i] > 0)
+    {
+        maxflow.addedge(s, i, b[i]);
+        maxflow.addedge(i, s, 0);
+        tmpans += b[i];
+    }
+    else
+    {
+        maxflow.addedge(i, t, -b[i]);
+        maxflow.addedge(t, i, 0);
+    }
+}
+有源有汇上下界可行流的解法：
+如果从s到t有一个可行流a，那么我们从t到s连一条，流量下界为a的边，上界INF
+那么就可以用无源无汇的模型了,二分a即可
+

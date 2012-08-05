@@ -1,0 +1,126 @@
+点覆盖集：无向图G的一个点集，使得该图中所有边都至少有一个端点在该点集中。
+点独立集：无向图G的一个点集，使得该点集中任意两个点之间没有边
+最大点权独立集：
+	等价于sum - 最小点权覆盖集
+限制：
+	网络流的解法只能用于二分图
+模型转换：
+	二分图最小点权覆盖集转换为网络流的最小割
+算法：
+	sum = val(点集X) + val(点集Y)
+	所有的v属于X连<s,v>点权为val(v)所有的v属于Y连<v,t> 点权为val(v),原图的<v,u>连<v,u>cap = INF
+	求解最小割 = 最小点权覆盖集
+	原理：网络流中的任意一个割都对应一个点权覆盖集，假设有没被覆盖的边e<u,v>，
+	     则点<s,u>与<v,t>没被割那么必有从s到t的流量不为0的增广路与割的定义矛盾
+	量化关系：最大流的最小割定理
+代码: HOJ matrix I
+//染色,标号，网络流
+scanf("%d %d", &n, &m);
+memset(check, false, sizeof (check));
+ans = 0;
+for (int i = 0; i < n; i++)
+{
+    for (int j = 0; j < m; j++)
+    {
+        scanf("%d", &matrix[i][j]);
+        ans += matrix[i][j];
+    }
+}
+int a = 1;
+for (int i = 0; i < n; i++)
+{
+    for (int j = 0; j < m; j++)
+        num[i][j] = a++;
+}
+pair<int, int> beg, temp;
+beg.first = beg.second = 0;
+q.push(beg);
+color[0][0] = 1;
+check[0][0] = true;
+s = 0;
+t = n * m + 1;
+while (!q.empty())
+{
+    beg = q.front();
+    q.pop();
+    for (int i = 0; i < 4; i++)
+    {
+        temp.first = beg.first + dx[i];
+        temp.second = beg.second + dy[i];
+        if (judge(temp.first, temp.second))
+        {
+            color[temp.first][temp.second] = !color[beg.first][beg.second];
+            check[temp.first][temp.second] = true;
+            q.push(temp);
+        }
+    }
+}
+for (int i = 0; i < n; i++)
+{
+    for (int j = 0; j < m; j++)
+    {
+        if (color[i][j])
+        {
+            addedge(s, num[i][j], matrix[i][j]);
+            addedge(num[i][j], s, 0);
+            for (int k = 0; k < 4; k++)
+            {
+                temp.first = i + dx[k];
+                temp.second = j + dy[k];
+                if (temp.first >= 0 && temp.second >= 0 && temp.first < n && temp.second < m)
+                {
+                    addedge(num[i][j], num[temp.first][temp.second], INF);
+                    addedge(num[temp.first][temp.second], num[i][j], 0);
+                }
+            }
+        }
+        else
+        {
+            addedge(num[i][j], t, matrix[i][j]);
+            addedge(t, num[i][j], 0);
+        }
+    }
+}
+printf("%d\n", ans - maxflowsap(t + 1, s, t));
+最小点权覆盖的输出:
+	最小割中的所有割边的有权点就是最小点覆盖集合的点集
+POJ destroying the graph
+void dfs(int x, int color)
+{
+    chk[x] = color;
+    for (edge * i = g[x]; i != NULL; i = i->nxt)
+    {
+        if (!chk[i->v] && i->cap > 0)
+            dfs(i->v, color);
+    }
+}
+
+void output(int n)
+{
+    memset(chk, 0, sizeof (chk));
+    memset(ans, 0, sizeof (ans));
+    int cnt = 0;
+    dfs(0, 1);
+    dfs(2 * n + 1, 2);
+    for (edge *j = g[0]; j != NULL; j = j->nxt)
+        if (chk[j->v] != 0 && chk[j->v] != chk[0])
+            ans[j->v] = 1;
+    for (edge *j = g[2 * n + 1]; j != NULL; j = j->nxt)
+        if (chk[j->v] != 0 && chk[j->v] != chk[2 * n + 1])
+            ans[j->v] = 1;
+    for (int i = 1; i <= n; i++)
+    {
+        if (ans[i])
+            cnt++;
+        if (ans[i + n])
+            cnt++;
+    }
+    printf("%d\n", cnt);
+    for (int i = 1; i <= n; i++)
+    {
+        if (ans[i])
+            printf("%d -\n", i);
+        if (ans[i + n])
+            printf("%d +\n", i);
+    }
+}

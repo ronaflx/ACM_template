@@ -1,0 +1,68 @@
+算法：
+	把该图的无向边随便定向，计算每个点的入度和出度。如果有某个点出入度之差为奇数，那么肯定不存在欧拉回路。因为欧拉回路要求每点入度 = 出度，也就是总度数为偶数，存在奇数度点必不能有欧拉回路。现在每个点入度和出度之差均为偶数。将这个偶数除以2，得x。有向边不能改变方向，直接删掉。另新建s和t。对于入 > 出的点u，连接边(u, t)、容量为x，对于出 > 入的点v，连接边(s, v)，容量为x之后，察看是否有满流的分配。有就是能有欧拉回路，没有就是没有。
+代码：
+const int N = 201, E = 2000;
+int indgr[N], outdgr[N], vfrom[E], vto[E], d[E];
+
+bool check(int n)
+{
+    for (int i = 1; i <= n; i++)
+        if ((indgr[i] - outdgr[i]) & 1)
+            return false;
+    return true;
+}
+
+int main()
+{
+    int csc, s, t, n, m, allt, alls;
+    scanf("%d", &csc);
+    while (csc--)
+    {
+        scanf("%d %d", &n, &m);
+        s = 0, t = n + 1, allt = alls = 0;
+        memset(indgr, 0, sizeof (indgr));
+        memset(outdgr, 0, sizeof (outdgr));
+        for (int i = 1; i <= m; i++)
+        {
+            scanf("%d %d %d", &vfrom[i], &vto[i], &d[i]);
+            outdgr[vfrom[i]]++;
+            indgr[vto[i]]++;
+        }
+        if (!check(n))
+            printf("impossible\n");
+        else
+        {
+            maxflow.firststart();
+            for (int i = 1; i <= n; i++)
+            {
+                if (indgr[i] > outdgr[i])
+                {
+                    maxflow.addedge(i, t, (indgr[i] - outdgr[i]) / 2);
+                    maxflow.addedge(t, i, 0);
+                    allt += indgr[i] - outdgr[i];
+                }
+                else if (indgr[i] < outdgr[i])
+                {
+                    maxflow.addedge(s, i, (outdgr[i] - indgr[i]) / 2);
+                    maxflow.addedge(i, s, 0);
+                    alls += outdgr[i] - indgr[i];
+                }
+            }
+            for (int i = 1; i <= m; i++)
+            {
+                if (d[i])
+                    continue;
+                maxflow.addedge(vfrom[i], vto[i], 1);
+                maxflow.addedge(vto[i], vfrom[i], 0);
+            }
+            allt /= 2;
+            alls /= 2;
+            if (allt != alls || allt != maxflow.maxflowsap(t + 1, s, t))
+                printf("impossible\n");
+            else
+                printf("possible\n");
+        }
+    }
+    return 0;
+}
+

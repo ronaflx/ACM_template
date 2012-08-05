@@ -1,0 +1,191 @@
+\documentclass[a4paper, 9pt, titlepage]{article}
+\usepackage{CJK}
+\usepackage{ifthen}         % logic options
+\usepackage{color}          % color image and color definition
+\usepackage{calc}           % do size calculations
+\usepackage{listings}       % format source code
+\usepackage{times}
+\usepackage{lastpage}
+\usepackage[a4paper, body={15true cm,25.5true cm},%
+            headheight=2true cm]{geometry}
+\usepackage[CJKbookmarks,bookmarks=true,linkcolor=black,citecolor=black,%
+            pagecolor=black,colorlinks=true]{hyperref}
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont} %  ?
+% style: list typesetting
+\definecolor{grey}{rgb}{0.3,0.3,0.3}
+\definecolor{darkgreen}{rgb}{0,0.3,0}
+\definecolor{darkblue}{rgb}{0,0,0.3}
+\definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
+\definecolor{darkgrey}{rgb}{0.1,0.1,0.1}
+
+\lstset{%
+% indexing
+    numbers=left,
+    numberstyle=\small,%
+% character display
+    showstringspaces=false,
+    showspaces=false,%
+    tabsize=4,%
+    columns=fullflexible,
+    extendedchars=false,
+% style
+    frame=lines,%
+    basicstyle=\small\ttfamily,%
+    keywordstyle=\color{darkgrey}\bfseries,%
+    commentstyle=\color{darkgreen},%\itshape,%
+    identifierstyle=,%
+    breaklines=true,                % sets automatic line breaking
+    escapeinside={/*@}{@*/},
+} \lstloadlanguages{C,C++,Java,Pascal}
+
+\title{Template}
+\author{$ronaflx$@$Glare$}
+\begin{document}
+\begin{CJK*}{GBK}{song}
+\maketitle
+\tableofcontents
+\newpage
+\section{string}
+\subsection{ACAutoMachine}
+\lstinputlisting[language=C++]{string/ACAutoMachine.cpp}
+\subsection{KMP}
+\lstinputlisting[language=C++]{string/KMP.cpp}
+\subsection{ELFhash}
+\lstinputlisting[language=C++]{string/ELFhash.cpp}
+\subsection{Minimum Representation}
+\lstinputlisting[language=C++]{string/Minimum_Representation.cpp}
+\subsection{C++replaceAll}
+\lstinputlisting[language=C++]{string/C++replaceAll.cpp}
+\subsection{Base64}
+\lstinputlisting[language=C++]{string/base64.cpp}
+\subsection{Trie Tree}
+\lstinputlisting[language=C++]{string/trie_tree.cpp}
+\subsection{Suffix Array}
+\lstinputlisting[language=C++]{string/suffix_array.cpp}
+
+\newpage
+\section{data\space structure}
+\subsection{AVL}
+\lstinputlisting[language=C++]{dataStructure/AVL.cpp}
+\subsection{Splay}
+\lstinputlisting[language=C++]{dataStructure/Splay.cpp}
+\subsection{LCA(RMQ)}
+\lstinputlisting[language=C++]{dataStructure/LCA(RMQ).cpp}
+\subsection{leftist Tree}
+\lstinputlisting[language=C++]{dataStructure/leftist_tree.cpp}
+\subsection{partition Tree}
+\lstinputlisting[language=C++]{dataStructure/partition_tree.cpp}
+\subsection{tree Representation}
+\lstinputlisting[language=C++]{dataStructure/treeRepresentation.cpp}
+\subsection{UFS}
+\lstinputlisting[language=C++]{dataStructure/UFS.cpp}
+\subsection{BIT\_findK}
+\lstinputlisting[language=C++]{dataStructure/BIT_findK.cpp}
+\subsection{UFS\_value}
+\lstinputlisting[language=C++]{dataStructure/UFS_value.cpp}
+\subsection{3D\_BIT}
+\lstinputlisting[language=C++]{dataStructure/BIT_3D.cpp}
+\subsection{DLX(exact)}
+\lstinputlisting[language=C++]{dataStructure/DLX(exact).cpp}
+\subsection{DLX(indistinct)}
+\lstinputlisting[language=C++]{dataStructure/DLX(indistinct).cpp}
+
+\newpage
+\section{graph}
+\subsection{BBC}
+\lstinputlisting[language=C++]{graph/connection/BBC.cpp}
+\subsection{EBBC}
+\lstinputlisting[language=C++]{graph/connection/E_BBC.cpp}
+\subsection{scc}
+\lstinputlisting[language=C++]{graph/connection/scc.cpp}
+\subsection{2-sat}
+\lstinputlisting[language=C++]{graph/connection/2_sat.cpp}
+\subsection{Hopcroft-Karp}
+\lstinputlisting[language=C++]{graph/match/Hopcroft-Karp.cpp}
+\subsection{hungary}
+\lstinputlisting[language=C++]{graph/match/hungary.cpp}
+\subsection{KM}
+\lstinputlisting[language=C++]{graph/match/KM.cpp}
+\subsection{stableMarriage}
+\lstinputlisting[language=C++]{graph/match/stableMarriage.cpp}
+\subsection{maximal Clique}
+\lstinputlisting[language=C++]{graph/other/BronKerbosch.cpp}
+\subsection{MaxClique}
+\lstinputlisting[language=C++]{graph/other/MaxClique.cpp}
+\subsection{minimum Cut}
+\lstinputlisting[language=C++]{graph/other/StoerWgner(minCut).cpp}
+\subsection{LCA}
+\lstinputlisting[language=C++]{graph/other/LCA(Tarjan).cpp}
+\subsection{bellman-ford}
+\lstinputlisting[language=C++]{graph/shortestPath/bellman-ford.cpp}
+\subsection{Eular-fleury}
+\lstinputlisting[language=C++]{graph/shortestPath/EularFleury.cpp}
+\subsection{k-shortest-path(with cycle)}
+\lstinputlisting[language=C++]{graph/shortestPath/k-shortest-path-Astar(cycle).cpp}
+\subsection{secondSP}
+\lstinputlisting[language=C++]{graph/shortestPath/secondSP.cpp}
+\subsection{SPFA}
+\lstinputlisting[language=C++]{graph/shortestPath/SPFA.cpp}
+\subsection{Best\ Radio\ Spanning\ Tree}
+\lstinputlisting[language=C++]{graph/spanningTree/bestRadioST.cpp}
+\subsection{Count\ Spanning\ Tree}
+\lstinputlisting[language=C++]{graph/spanningTree/countST.cpp}
+\subsection{Degree\ Limited\ Spanning\ Tree}
+\lstinputlisting[language=C++]{graph/spanningTree/dgrMST.cpp}
+\subsection{second\ MST}
+\lstinputlisting[language=C++]{graph/spanningTree/secondMST.cpp}
+\subsection{minimum direct tree(matrix)}
+\lstinputlisting[language=C++]{graph/spanningTree/MDT(matrix).cpp}
+\subsection{minimum direct tree(pool)}
+\lstinputlisting[language=C++]{graph/spanningTree/MDT(pool).cpp}
+\subsection{maxflow}
+\lstinputlisting[language=C++]{networkflow/sap.cpp}
+\subsection{mincostflow}
+\lstinputlisting[language=C++]{networkflow/mincost.cpp}
+
+\newpage
+\section{computational geometry}
+\subsection{geometry}
+\lstinputlisting[language=C++]{computationalGeometry/simple.cpp}
+\subsection{3D-Convex}
+\lstinputlisting[language=C++]{computationalGeometry/3D-Convex_Hull.cpp}
+
+\newpage
+\section{math}
+\subsection{cantor extend}
+\lstinputlisting[language=C++]{math/cantor.cpp}
+\subsection{eular function}
+\lstinputlisting[language=C++]{math/eular.cpp}
+\subsection{Matrix}
+\lstinputlisting[language=C++]{math/matrix(jff).cpp}
+\subsection{miller rabin}
+\lstinputlisting[language=C++]{math/miller_rabin.cpp}
+\subsection{pollard rho}
+\lstinputlisting[language=C++]{math/pollard_rho.cpp}
+\subsection{linearModularSystem}
+\lstinputlisting[language=C++]{math/linearModularSystem.cpp}
+\subsection{Eratosthenes}
+\lstinputlisting[language=C++]{math/prime_judge.cpp}
+
+\newpage
+\section{dynamic Programming}
+\subsection{DFA DP}
+\lstinputlisting[language=C++]{DP/DFA_DP.cpp}
+\subsection{mask \& connection}
+\lstinputlisting[language=C++]{DP/mask&Connection.cpp}
+\subsection{RMQ}
+\lstinputlisting[language=C++]{DP/RMQ.cpp}
+\subsection{HOJ2973}
+\lstinputlisting[language=C++]{DP/HOJ2973.cpp}
+\subsection{slope}
+\lstinputlisting[language=C++]{DP/slope_DP.cpp}
+\section{other}
+\subsection{连通性DP(最小表示法)}
+\lstinputlisting[language=C++]{define.cpp}
+\subsection{define}
+\lstinputlisting[language=C++]{define.cpp}
+\subsection{define}
+\lstinputlisting[language=C++]{define.cpp}
+\end{CJK*}
+\end{document}
