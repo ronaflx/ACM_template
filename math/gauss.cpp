@@ -59,5 +59,18 @@ int gauss (int n, int m) {
 	}
 	for(int k = i; k < n; k++)
 		if(b[k]) return -1;
+	for(int k = i - 1;k >= 0;k--) {
+		int pos = 0;
+		for(int i = 0;i < n;i++) {
+			if(A[k][i]) {
+				pos = i;
+				break;
+			}
+		}
+		x[pos] ^= b[k];
+		for(int i = pos + 1;i < n;i++) {
+			x[pos] ^= A[k][i] * x[i];
+		}
+	}
 	return m - i;
 }
