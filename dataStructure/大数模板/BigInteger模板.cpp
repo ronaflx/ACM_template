@@ -250,7 +250,7 @@ void BigInteger::format()
     {
         negative = false;
     }
-}//做什么用的？
+}
 
 bool BigInteger::lessthan(const BigInteger& b, int bg = 0) const {
     if (len - bg != b.len) {

@@ -34,12 +34,12 @@ LL DP(int n, int m) {
 					if(l == 0 && u == 0) {
 						transfer(dp[now][k], dp[pre][k]);
 					}
-				} else if(l == 0 && u == 0) { //当向下向右都可以走的时候建立两个插头
+				} else if(l == 0 && u == 0) { //build a pair () when can walk down and right
 					if(maps[i][j + 1] == '.' && maps[i + 1][j] == '.') {
 						int nxt = nows + bit3[j] + 2 * bit3[j + 1];
 						transfer(dp[now][Hash[nxt]], dp[pre][k]);
 					}
-				} else if(l == 1 && u == 1) { //合并2个左插头，整理相应的右插头
+				} else if(l == 1 && u == 1) { //merge ((
 					int cnt = 0;
 					for(int b = j + 2; b <= m; b++) {
 						int tmp = getbit(nows, b);
@@ -50,7 +50,7 @@ LL DP(int n, int m) {
 							break;
 						}
 					}
-				} else if(l == 2 && u == 2) { //合并2个右插头，整理相应的左插头
+				} else if(l == 2 && u == 2) { //merge ))
 					int cnt = 0;
 					for(int b = j - 1;b >= 0;b--) {
 						int tmp = getbit(nows, b);
@@ -61,17 +61,17 @@ LL DP(int n, int m) {
 							break;
 						}
 					}
-				} else if(l == 2 && u == 1) { //合并)(,什么都不用整理
+				} else if(l == 2 && u == 1) { //merge )(
 					transfer(dp[now][Hash[nows]], dp[pre][k]);
 				} else if((!l && u) || (l && !u)) {
 					if(maps[i + 1][j] == '.')
 						transfer(dp[now][Hash[nows + (l + u) * bit3[j]]], dp[pre][k]);
 					if(maps[i][j + 1] == '.')
 						transfer(dp[now][Hash[nows + (l + u) * bit3[j + 1]]], dp[pre][k]);
-				} else if(l == 1 && u == 2) {/* 在最后一个格子发生,本题 不需要该步*/}
+				} else if(l == 1 && u == 2) {/* only happen last step*/}
 			}
 		}
-		swap(pre, now); CC(dp[now], 0);//必须CC一下，把不合法的状态设为-1
+		swap(pre, now); CC(dp[now], 0);//memset to set illegal state -1
 		for(int k = 0, s; s = status[k], s < bit3[m]; k++)
 			if(dp[pre][k] != -1) dp[now][Hash[s * 3]] = dp[pre][k];
 	}
