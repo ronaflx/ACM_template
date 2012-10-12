@@ -8,7 +8,7 @@ void build() {
 	last = root = pool;
 	memset(pool, 0, sizeof(pool));
 }
-void insert(char *from) {
+void insert(const char *from) {
 	node * p = root;
 	for (char *i = from; *i; i++) {
 		if (p->child[*i - 'a'] == NULL)
@@ -17,7 +17,7 @@ void insert(char *from) {
 		p->final++;
 	}
 }
-int query(char *from) {
+int query(const char *from) {
 	node * p = root;
 	for (char *i = from; *i; i++) {
 		p = p->child[*i - 'a'];

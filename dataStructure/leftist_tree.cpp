@@ -4,11 +4,9 @@
 //because of the pointer could not be NULL
 //especially when use new just makeNULL when memory is enough
 template<typename T>
-class leftist_tree
-{
+class leftist_tree {
 private:
-    class node
-    {
+    class node {
     public:
         T v;
         int dist;
@@ -18,8 +16,7 @@ private:
     };
     node* root;
     int s;
-    node* merge(node* &left, node* &right)
-    {
+    node* merge(node* &left, node* &right) {
         if(left == NULL) return right;
         if(right == NULL) return left;
         if(CMP(right->v, left->v)) swap(left, right);
@@ -28,8 +25,7 @@ private:
         left->dist = DIST(left->rr) + 1;
         return left;
     }
-    void clear(node* root)
-    {
+    void clear(node* root) {
         if(root == NULL) return;
         clear(root->ll);
         clear(root->rr);
@@ -39,8 +35,7 @@ private:
 public:
     leftist_tree(){root = NULL;s = 0;}
     ~leftist_tree(){clear(root);}
-    void push(T v)
-    {
+    void push(T v) {
         node * newNode = new node(v);
         root = merge(newNode, root);
         s++;
@@ -48,19 +43,16 @@ public:
     void clear(){clear(root);}
     int size(){return this->s;}
     T top(){return root->v;}
-    void pop()
-    {
+    void pop() {
         node *tmp = root;
         root = merge(root->ll, root->rr);
         delete tmp;
         s--;
     }
-    void merge(leftist_tree<T>& tree)
-    {
+    void merge(leftist_tree<T>& tree) {
         this->root = merge(root, tree.root);
         s += tree.s;
         tree.root = NULL;
     }
     void makeNULL(){root = NULL;}
 };
-

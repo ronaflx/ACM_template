@@ -51,10 +51,10 @@ LL MaxPrimeFactor(LL n) {
 int main() {
     LL n;
     while(scanf("%lld", &n) == 1) {
-        if(test(n))                 //test(n) is miller robin
+        if(test(n))   	//test(n) is miller robin
             printf("Yes\n");
         else {
-            min = n;                   //min is the min factor of n
+            min = n;     //min is the min factor of n
             find(n, C);
             printf("No %lld\n",min);
             //printf("%lld\n",MaxPrimeFactor(n));

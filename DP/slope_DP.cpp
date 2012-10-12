@@ -1,10 +1,8 @@
 const int SIZE = 20002;
 const LL INF = 2000000000LL;
 long long w[SIZE], d[SIZE];//input data
-long long ds[SIZE], dp[SIZE];
-long long sw[SIZE], sp[SIZE], bp[SIZE];
+long long ds[SIZE], dp[SIZE], sw[SIZE], sp[SIZE], bp[SIZE];
 int n, q[SIZE], head, tail;
-
 void preprocess() {
     ds[1] = 0;
     for(int i = 2; i <= n + 1; i++)
@@ -18,7 +16,6 @@ void preprocess() {
     for(int i = n; i >= 1; i--)
         bp[i] = bp[i + 1] + w[i] * (ds[n + 1] - ds[i]);
 }
-
 void DP() {
     fill(dp + 1,dp + n + 1, INF);
     long long ans = INF;
@@ -55,7 +52,6 @@ void DP() {
     }
     printf("%lld\n",ans);
 }
-
 int main() {
     while(scanf("%d", &n) == 1) {
         for(int i = 1; i <= n; i++)
@@ -65,4 +61,3 @@ int main() {
     }
     return 0;
 }
-

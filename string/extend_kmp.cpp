@@ -3,7 +3,6 @@
 #include <cstdio>
 #include <cstring>
 using namespace std;
-
 void get_suffix(const char* sub, int len, int next[]) {
 	//extend[i] = len(lcp(sub, sub.substr(i)))
 	int pos = 1, j = 0;
@@ -21,7 +20,6 @@ void get_suffix(const char* sub, int len, int next[]) {
 		}
 	}
 }
-
 void extend_kmp(const char* str, int n, const char* sub, int m, int extend[], int next[]) {
 	get_suffix(sub, m, next);
 	int j = 0, pos = 0;

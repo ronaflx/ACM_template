@@ -4,8 +4,7 @@
 */
 const static int N = 130;
 int n, maps[N][N], cnt;
-void countClique(int *p, int ps, int *x, int xs)
-{
+void countClique(int *p, int ps, int *x, int xs) {
         if(ps == 0) {
                 if(xs == 0) cnt++;
                 return ;
@@ -41,4 +40,3 @@ int countClique() {
         countClique(p, n, x, 0);
         return cnt;
 }
-

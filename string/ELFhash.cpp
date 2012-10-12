@@ -17,7 +17,6 @@ public:
 				return i->p = judge ? i->p + 1: i->p;
 		return 0;
 	}
-
 	void insert(char* str, int p) {
 		if(find(str, 1)) return;
 		unsigned t = ELFhash(str);

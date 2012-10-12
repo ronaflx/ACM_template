@@ -11,29 +11,23 @@ v is all the point of (set A and set B)
 const int V = 201, E = 10000;
 vector<int> adj[V];
 int ym[V], chk[V];
-bool find_path(int x)
-{
-	FOREACH(adj[x], i)
-	{
+bool find_path(int x) {
+	FOREACH(adj[x], i) {
 		if (chk[*i]) continue;
 		chk[*i] = true;
-		if (ym[*i] == -1 || find_path(ym[*i]))
-		{
+		if (ym[*i] == -1 || find_path(ym[*i])) {
 			ym[*i] = x;
 			return true;
 		}
 	}
 	return false;
 }
-int slove(int n)
-{
+int solve(int n) {
 	CC(ym, -1);
 	int res = 0;
-	for (int i = 0; i < n; i++)
-	{
+	for (int i = 0; i < n; i++) {
 		memset(chk, 0, sizeof (chk));
 		if (find_path(i)) res++;
 	}
 	return res;
 }
-
