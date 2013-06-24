@@ -24,6 +24,6 @@ void output(int n) {
 }
 int hashB[M], hashG[M];
 void initialize() {
-    memset(hashB, 0, sizeof(hashB)), memset(hashG, 0, sizeof(hashG));
-    memset(my, -1, sizeof(my)),          memset(now, 0, sizeof(now));
+    memset(hashB,0,sizeof(hashB)),memset(hashG,0,sizeof(hashG));
+    memset(my, -1, sizeof(my)), memset(now, 0, sizeof(now));
 }

@@ -1,4 +1,4 @@
-﻿const int N = 100000;
+const int N = 100000;
 int father[N], chk[N], dgr[N];
 vector<vector<int> > adj, query;
 int set_find(int i) {

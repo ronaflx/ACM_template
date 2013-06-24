@@ -1,62 +1,62 @@
-/* val must be positive
- * min match use INF - val
- * must build a matrix[V][V]*/
-const int V = 100;
-const int INF = 100000;
-int val[V][V], lx[V], ly[V], my[V];
-bool visx[V], visy[V];
-void initialize(int n)
-{
-    CC(val, 0), CC(ly, 0), CC(my, -1);
-    fill(lx, lx + n, -INF);
-}
-bool find_path(int x, const int n)
-{
-    visx[x] = true;
-    for(int i = 0; i < n; i++)
-    {
-        if(!visy[i] && lx[x] + ly[i] == val[x][i])
-        {
-            visy[i] = true;
-            if(my[i] == -1 || find_path(my[i], n))
-            {
-                my[i] = x;
-                return true;
-            }
-        }
+struct Graph {
+    int ny, nx;
+    double w[N][N];
+    double lx[N], ly[N];
+    int linky[N];
+    int visx[N], visy[N];
+    double slack[N];
+    void init(int nn,int mm) {
+        nx = nn;
+        ny = mm;
     }
-    return false;
-}
-int solve(int n)
-{
-    for(int i = 0; i < n; i++)
-        lx[i] = *max_element(val[i], val[i] + n);
-    int dx, sum = 0;
-    for(int i = 0; i < n; i++)
-    {
-        while(true)
-        {
-            CC(visx, 0), CC(visy, 0);
-            if(find_path(i, n)) break;
-            dx = INF;
-            for(int j = 0; j < n; j++)
-            {
-                if(!visx[j]) continue;
-                for(int k = 0; k < n; k++)
-                {
-                    if(visy[k]) continue;
-                    dx = min(dx, lx[j] + ly[k] - val[j][k]);
+    bool find(int x) {
+        visx[x] = 1;
+        for(int y = 1; y <= ny; y++) {
+            if(visy[y]) continue;
+            double t = lx[x] + ly[y] - w[x][y];
+            if(t < eps) {
+                visy[y] = 1;
+                if(linky[y] == -1 || find(linky[y])) {
+                    linky[y] = x;
+                    return true;
                 }
-            }
-            for(int j = 0; j < n; j++)
-            {
-                if(visx[j]) lx[j] -= dx;
-                if(visy[j]) ly[j] += dx;
+            } else if(slack[y] > t) {
+                slack[y] = t;
             }
         }
+        return false;
     }
-    for(int i = 0; i < n; i++)
-        sum += INF - val[my[i]][i];
-    return sum;
-}
- 
+    double KM() {
+        memset(linky, -1, sizeof(linky));
+        for(int i = 1; i <= nx; i++) lx[i] = -INF;
+        memset(ly, 0, sizeof(ly));
+        for(int i = 1; i <= nx; i++)
+            for(int j = 1; j <= ny; j++)
+                if(w[i][j] > lx[i]) lx[i] = w[i][j];
+        for(int x = 1; x <= nx; x++) {
+            for(int i = 1; i <= ny; i++) slack[i] = INF;
+            while(true) {
+                memset(visx, 0, sizeof(visx));
+                memset(visy, 0, sizeof(visy));
+                if(find(x)) break;
+                double d = INF;
+                for(int i = 1; i <= ny; i++)
+                    if(!visy[i]) d = min(d, slack[i]);
+                if(d == INF) return -1;
+                for(int i = 1; i <= nx; i++)
+                    if(visx[i]) lx[i] -=d;
+                for(int i = 1; i <= ny; i++)
+                    if(visy[i]) ly[i] += d;
+                    else slack[i] -= d;
+            }
+        }
+        int cnt = 0;
+        for(int i = 1; i <= ny; i++)
+            if(linky[i] != -1) cnt++;
+        if(cnt != nx) return -1;
+        double tp = 0;
+        for(int i = 1; i <= ny; i++)
+            if(linky[i] != -1 ) tp += w[linky[i]][i];
+        return tp;
+    }
+}g;

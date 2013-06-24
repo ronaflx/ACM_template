@@ -1,9 +1,8 @@
-/* 度限制最小生成树 0为根 限制度k最大 */
 const int N = 25, LEN = 15, INF = 1<<29;
 int dis[N][N]= {}, f[N]= {}, father[N]= {}, n;
 bool visit[N]= {};
 bool used[N][N]= {};
-void Dfs(int last, int v)/*node 0 is root*/ {
+void Dfs(int last, int v) {
     visit[v] = 1;
     if (!father[v]) f[v] = -INF;
     else f[v] = max(dis[last][v], f[father[v]]);
@@ -14,7 +13,7 @@ void Dfs(int last, int v)/*node 0 is root*/ {
 int DegreeLimitMST(int k) {
     int ret = 0, path[N], group[N]= {}, g = 0, pre[N], degree = 0;
     memset(used, 0, sizeof(used));
-    for (int i = 1; i < n; ++i)//除了0点的最小生成森林
+    for (int i = 1; i < n; ++i)
         if (!group[i]) {
             group[i] = ++g;
             for (int j = 0; j < n; ++j)
@@ -33,7 +32,7 @@ int DegreeLimitMST(int k) {
                         path[j] = dis[mark][j], pre[j] = mark;
             }
         }
-    for (int i = 1; i <= g; ++i)/*和0点相连*/ {
+    for (int i = 1; i <= g; ++i) {
         int tmp = INF, mark = -1;
         for (int j = 1; j < n; ++j)
             if (group[j] == i && tmp > dis[0][j])
@@ -42,7 +41,7 @@ int DegreeLimitMST(int k) {
         ret += tmp;
         ++degree;
     }
-    while (degree < k)/*保证有解,不可能森林大于k个，通过增大度减少树的边权*/ {
+    while (degree < k) {
         memset(visit, 0, sizeof(visit));
         Dfs(0, 0);
         int tmp = INF, mark = -1, t;
