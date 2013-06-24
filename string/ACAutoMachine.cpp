@@ -37,7 +37,7 @@ void buildFail(node*& now, int ith) {//build now's ith son
 	if(tmp == NULL) now->nxt[ith]->fail = root;
 }
 void build() {
-	int head, tail = 0;
+	int head = 0, tail = 0;
 	q[tail++] = root;
 	while (head != tail) {
 		node * beg = q[head++];

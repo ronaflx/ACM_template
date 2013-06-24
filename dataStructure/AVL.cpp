@@ -49,9 +49,7 @@ private:
 		R->size = R->rchild->size + R->lchild->size + 1;
 	}
 	void clear(node_ptr &R) {
-		if(R == nilptr) {
-			return;
-		}
+		if(R == nilptr) return;
 		clear(R->lchild);
 		clear(R->rchild);
 		delete R;
@@ -72,26 +70,22 @@ private:
 		R = rc;
 		fix(R);
 	}
-	void leftdoublerotate(node_ptr &R) {
-		rightrotate(R->rchild);
-		leftrotate(R);
-	}
-	void rightdoublerotate(node_ptr &R) {
-		leftrotate(R->lchild);
-		rightrotate(R);
-	}
 	void maintain(node_ptr &R) {
 		if (R->lchild != nilptr) {
-			if (R->lchild->lchild->h == R->rchild->h + 1)
+			if (R->lchild->lchild->h == R->rchild->h + 1) {
 				rightrotate(R);
-			else if (R->lchild->rchild->h == R->rchild->h + 1)
-				rightdoublerotate(R);
+            } else if (R->lchild->rchild->h == R->rchild->h + 1) {
+                leftrotate(R->lchild);
+                rightrotate(R);
+            }
 		}
 		if (R->rchild != nilptr) {
-			if (R->rchild->rchild->h == R->lchild->h + 1)
+			if (R->rchild->rchild->h == R->lchild->h + 1) {
 				leftrotate(R);
-			else if (R->rchild->lchild->h == R->lchild->h + 1)
-				leftdoublerotate(R);
+            } else if (R->rchild->lchild->h == R->lchild->h + 1) {
+                rightrotate(R->rchild);
+                leftrotate(R);
+            }
 		}
 	}
 	void insert(node_ptr &R, T value) {
@@ -134,4 +128,3 @@ private:
 		return ret;
 	}
 };
-
