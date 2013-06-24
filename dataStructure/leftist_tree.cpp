@@ -1,8 +1,6 @@
 #define CMP(a, b) ((a) > (b))
 #define DIST(v) ((v == NULL) ? -1 : (v->dist))
-//must be careful when clear after merge
-//because of the pointer could not be NULL
-//especially when use new just makeNULL when memory is enough
+//use it template carefully
 template<typename T>
 class leftist_tree {
 private:
@@ -21,7 +19,7 @@ private:
         if(right == NULL) return left;
         if(CMP(right->v, left->v)) swap(left, right);
         left->rr = merge(left->rr, right);
-        if(DIST(left->rr) > DIST(left->ll)) swap(left->ll, left->rr);
+        if(DIST(left->rr)>DIST(left->ll))swap(left->ll, left->rr);
         left->dist = DIST(left->rr) + 1;
         return left;
     }

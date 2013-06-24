@@ -37,8 +37,8 @@ public:
 // ptree.query(1, n, a, b, 0, k) th kth number of [a, b]
     int query(int L, int R, int l, int r, int depth, int k) {
         if (l == r) return tree[depth][l];
-        int cnt, mid, tmpl, tmpr;
-        mid = (R + L) / 2, cnt = toleft[depth][r] - toleft[depth][l - 1];
+        int cnt, mid = (R + L) / 2, tmpl, tmpr;
+        cnt = toleft[depth][r] - toleft[depth][l - 1];
         if (cnt >= k) {
             tmpl = L + toleft[depth][l - 1] - toleft[depth][L - 1];
             tmpr = tmpl + cnt - 1;

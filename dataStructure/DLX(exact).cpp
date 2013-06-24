@@ -38,8 +38,11 @@ void initialize(int n, int m) {
     l[HEAD] = m;
     r[HEAD] = 1;
     for (int i = 1; i <= m; i++) {
-        if (i == m) r[i] = HEAD;
-        else 	    r[i] = i + 1;
+        if (i == m) {
+            r[i] = HEAD;
+        } else {
+            r[i] = i + 1;
+        }
         l[i] = i - 1;
         c[i] = u[i] = d[i] = i;
         s[i] = 0;
@@ -51,10 +54,8 @@ void initialize(int n, int m) {
             if (maps[i - 1][j - 1] == 0) continue;
             size++;
             int tmp = u[j];
-            u[j] = size;
-            d[tmp] = size;
-            d[size] = j;
-            u[size] = tmp;
+            u[j] = size; d[tmp] = size;
+            d[size] = j; u[size] = tmp;
             if (!first) {
                 first = size;
                 l[size] = r[size] = size;

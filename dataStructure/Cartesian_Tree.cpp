@@ -15,7 +15,7 @@ struct node {
 /*lt[i] is nodes[i]'s left son, shouldn't sort again*/
 int lt[N], rt[N], parent[N];
 void rotate(int i) {
-	while(parent[i] != -1 && nodes[i].value < nodes[parent[i]].value) {
+	while(parent[i]!=-1&&nodes[i].value<nodes[parent[i]].value) {
 		rt[parent[i]] = lt[i];
 		if(lt[i] != -1) parent[lt[i]] = parent[i];
 		lt[i] = parent[i];
@@ -53,7 +53,8 @@ int main() {
 		build(n);
 		printf("YES\n");
 		for(int i = 0;i < n;i++) {
-			printf("%d %d %d\n", V(parent[pos[i]]), V(lt[pos[i]]), V(rt[pos[i]]));
+			printf("%d %d %d\n", V(parent[pos[i]]), 
+				V(lt[pos[i]]), V(rt[pos[i]]));
 		}
 	}
 	return 0;
