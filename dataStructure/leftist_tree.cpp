@@ -1,8 +1,6 @@
-#define CMP(a, b) ((a) > (b))
 #define DIST(v) ((v == NULL) ? -1 : (v->dist))
-//use it template carefully
-template<typename T>
-class leftist_tree {
+template<typename T, class Compare = greater<T> >
+class LeftistTree {
 private:
     class node {
     public:
@@ -14,43 +12,43 @@ private:
     };
     node* root;
     int s;
-    node* merge(node* &left, node* &right) {
+    Compare _compare;
+    node* Merge(node* left, node* right) {
         if(left == NULL) return right;
         if(right == NULL) return left;
-        if(CMP(right->v, left->v)) swap(left, right);
-        left->rr = merge(left->rr, right);
+        if(_compare(right->v, left->v)) swap(left, right);
+        left->rr = Merge(left->rr, right);
         if(DIST(left->rr)>DIST(left->ll))swap(left->ll, left->rr);
         left->dist = DIST(left->rr) + 1;
         return left;
     }
-    void clear(node* root) {
+    void Clear(node*& root) {
         if(root == NULL) return;
-        clear(root->ll);
-        clear(root->rr);
+        Clear(root->ll);
+        Clear(root->rr);
         delete root;
         root = NULL;
     }
 public:
-    leftist_tree(){root = NULL;s = 0;}
-    ~leftist_tree(){clear(root);}
-    void push(T v) {
+    LeftistTree(){root = NULL;s = 0;}
+    ~LeftistTree(){Clear(root);}
+    void Push(T v) {
         node * newNode = new node(v);
-        root = merge(newNode, root);
+        root = Merge(newNode, root);
         s++;
     }
-    void clear(){clear(root);}
-    int size(){return this->s;}
-    T top(){return root->v;}
-    void pop() {
+    void Clear(){Clear(root);}
+    int Size(){return this->s;}
+    T Top(){return root->v;}
+    void Pop() {
         node *tmp = root;
-        root = merge(root->ll, root->rr);
+        root = Merge(root->ll, root->rr);
         delete tmp;
         s--;
     }
-    void merge(leftist_tree<T>& tree) {
-        this->root = merge(root, tree.root);
+    void Merge(LeftistTree<T>& tree) {
+        this->root = Merge(root, tree.root);
         s += tree.s;
         tree.root = NULL;
     }
-    void makeNULL(){root = NULL;}
 };

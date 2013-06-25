@@ -1,4 +1,4 @@
-string longestPalindrome(string s) {
+string LongestPalindrome(string s) {
 	int n = s.size() * 2 + 1;
 	char* str = new char[n + 1];
 	str[0] = '#';
