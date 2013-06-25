@@ -103,5 +103,68 @@ escapeinside={/*@}{@*/}}
 \lstinputlisting[language=C++]{graph/spanningTree/dgrMST.cpp}
 \subsection{Minimum Directed Tree}
 \lstinputlisting[language=C++]{graph/spanningTree/MDT(pool).cpp}
+\section{Math}
+\subsection{Minimum Directed Tree}
+\lstinputlisting[language=C++]{graph/spanningTree/MDT(pool).cpp}
+\section{Math}
+    \subsection{Matrix}
+        \lstinputlisting[language=C++]{Source/Math/Matrix/Matrix.txt}
+    \subsection{Number Thoery}
+        \subsubsection{Phi}
+             \lstinputlisting[language=C++]{Source/Math/NumberThoery/phi.txt}
+        \subsubsection{$a^x == b(mod n)$}
+            $a^x=b(mod p)$ p is prime number:Baby-step-gaint-step
+            \lstinputlisting[language=C++]{Source/Math/NumberThoery/babyStep.txt}
+            $a^x=b(mod n)$ a,b,n can be any integer.Baby-step-gaint-step
+            \lstinputlisting[language=C++]{Source/Math/NumberThoery/extend_baby_step.txt}
+        \subsubsection{$x*x == a (mod p)$}
+            \lstinputlisting[language=C++]{Source/Math/NumberThoery/square_roots_in_zq.txt}
+        \subsubsection{Miller and Pollard}
+            \lstinputlisting[language=C++]{Source/Math/NumberThoery/p_rho.txt}
+%        \subsubsection{Miller in unsigned int}
+%     \lstinputlisting[language=C++]{Source/Math/NumberThoery/Miller-2.32.txt}
+        \subsubsection{Get prime in range}
+            \lstinputlisting[language=C++]{Source/Math/NumberThoery/getPrimeInRange.txt}
+        \subsubsection{Mod Equation}
+             \lstinputlisting[language=C++]{Source/Math/NumberThoery/MEquation.txt}
+    \subsection{Fraction}
+        \subsubsection{$a/b < x/y < c/d$}
+         \lstinputlisting[language=C++]{Source/Math/Fraction/middle_fraction.cpp}
+         \subsubsection{$x^2 - n*y^2 = 1$}
+         $n$ is a non-squre-number, solve the minimum $(x1,y1)$\\
+         all $(x_i,y_i)$ satisfies:
+         $$x_i + y_i\sqrt n = (x_1 + y_1\sqrt n)^i$$
+         $$x_{i+1} = x_1x_i + ny_1y_i$$
+         $$y_{i+1} = x_1y_i + y_1x_i$$
+         \lstinputlisting[language=C++]{Source/Math/Fraction/pell_equation.cpp}
+         \subsubsection{$\sum_{k=0}^{n-1}\lfloor (a+d*k)/m \rfloor$}
+         \lstinputlisting[language=C++]{Source/Math/Fraction/gauss_sum.cpp}
+    \subsection{Linear Equaton}
+        \subsubsection{Xor Equation}
+             1 1 0 0 = 0 (here when r = 0, i = 0)\\
+             0 0 1 0 = 1 (here when r = 1, i = 2)\\
+             0 0 0 1 = 1 (here when r = 2, i = 3)\\
+            \lstinputlisting[language=C++]{Source/Math/xorEquation.txt}
+            be carefully when use long long and int
+            \lstinputlisting[language=C++]{Source/Math/xorEquation_bit.txt}
+        \subsubsection{Equation in Z}
+        if in Q , change integer to fracton and no clean()
+            \lstinputlisting[language=C++]{Source/Math/GuassInZ.txt}
+        \subsubsection{Equation in R}
+            \lstinputlisting[language=C++]{Source/Math/GuassInR.txt}
+        \subsubsection{det}
+            \lstinputlisting[language=C++]{Source/Math/det.txt}
+       \subsection{Anti-Nim}
+       Anti-Nim:\
+    $res = \oplus _{i} sg(i)$ \\
+    $cnt  = \sum_{i} [sg(i) <= 1]$\\
+    first player wins when ($res = 0$ and $cnt = n$) $\parallel$ ($res \neq 0$ and $ cnt \neq n$)
+       \subsection{nim multiply}
+        $x \otimes y$ = mex \{$(x \otimes a) \oplus (b \otimes y) \oplus (a \otimes b)|0 \leq a < x, 0 \leq b < y$\}
+        \lstinputlisting[language=C++]{Source/Math/nim_mult.txt}
+    \subsection{FFT}
+        \lstinputlisting[language=C++]{Source/Math/FFT.txt}
+    \subsection{Popynomial}
+        \lstinputlisting[language=C++]{Source/Math/Polynomial.txt}
 \end{CJK*}
 \end{document}
