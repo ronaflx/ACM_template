@@ -4,21 +4,17 @@
 const int V = 10000;
 vector<int> adj[V];
 int low[V], dfn[V], cnt[V], depth;
-void initialize(int n)
-{
+void initialize(int n) {
     REP(i, 0, n) adj[i].clear();
     CC(cnt, 0);CC(dfn, 0);
     depth = 0;
 }
-void dfs(int x, const int ROOT)
-{
+void dfs(int x, const int ROOT) {
     low[x] = dfn[x] = ++depth;
     int s = adj[x].size(), w, num = 0;
-    REP(i, 0, s)
-    {
+    REP(i, 0, s) {
         w = adj[x][i];
-        if (!dfn[w])
-        {
+        if (!dfn[w]) {
             num++;
             dfs(w, ROOT);
             low[x] = min(low[w], low[x]);
@@ -30,28 +26,21 @@ void dfs(int x, const int ROOT)
         else low[x] = min(low[x], dfn[w]);
     }
 }
-int solve(int n)
-{
+int solve(int n) {
     int cc = 0;
-    REP(i, 0, n)
-    {
-        if (dfn[i] == 0)
-        {
+    REP(i, 0, n) {
+        if (dfn[i] == 0) {
             dfs(i, i);
             cc++;
         }
     }
     return cc;
 }
-int main()
-{
+int main() {
     int n, m, x, y;
-
-    while (scanf("%d %d", &n, &m) == 2 && n + m)
-    {
+    while (scanf("%d %d", &n, &m) == 2 && n + m) {
         initialize(n);
-        REP(i, 0, m)
-        {
+        REP(i, 0, m) {
             scanf("%d %d", &x, &y);
             adj[x].push_back(y);
             adj[y].push_back(x);

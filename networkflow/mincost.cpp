@@ -1,4 +1,3 @@
-using namespace std;
 typedef long long USETYPE;
 const USETYPE INF = numeric_limits<USETYPE>::max();//<limits>
 template<typename T = int>

@@ -1,6 +1,4 @@
-const int V = 1010;
-const int E = V*V*2;
-const int INF = 1<<29;
+const int V = 1010, E = V*V*2, INF = 1<<29;
 typedef struct Edge{
 	int v, cap, flow;
 	Edge *next, *re;

@@ -7,7 +7,7 @@
 \usepackage{listings}       % format source code
 \usepackage{fancyhdr}
 \lstset{language=C,showspaces=false,showstringspaces=false,%
-tabsize=4,extendedchars=false,columns=fullflexible,%
+tabsize=2,extendedchars=false,columns=fullflexible,%
 escapeinside={/*@}{@*/}}
 \usepackage{times}
 \usepackage{lastpage}
@@ -76,6 +76,8 @@ escapeinside={/*@}{@*/}}
 \lstinputlisting[language=C++]{dataStructure/Cartesian_Tree.cpp}
 \subsection{Splay}
 \lstinputlisting[language=C++]{dataStructure/Splay.cpp}
+\subsection{SplitTree}
+\lstinputlisting[language=C++]{Source/Data/splitTree.txt}
 \section{Graph Theory}
 \subsection{2-Satisfiability}
 \lstinputlisting[language=C++]{graph/connection/2_sat.cpp}
@@ -95,6 +97,8 @@ escapeinside={/*@}{@*/}}
 \lstinputlisting[language=C++]{graph/other/MaximumClique.cpp}
 \subsection{Maximal Clique}
 \lstinputlisting[language=C++]{graph/other/BronKerbosch.cpp}
+\subsection{Eular Circles}
+\lstinputlisting[language=C++]{graph/shortestPath/EularFleury.cpp}
 \subsection{Lowest Common Ancestor}
 \lstinputlisting[language=C++]{graph/other/LCA.cpp}
 \subsection{Minimum Cut Algorithm}
@@ -108,6 +112,8 @@ escapeinside={/*@}{@*/}}
 \lstinputlisting[language=C++]{DynamicPrograming/mask_DP_I.cpp}
 \subsection{Mask DP II}
 \lstinputlisting[language=C++]{DynamicPrograming/mask_DP_II.cpp}
+\subsection{Veterx Pair on Tree}
+\lstinputlisting[language=C++]{DynamicPrograming/treeDP.cpp}
 \section{Math}
     \subsection{Matrix}
         \lstinputlisting[language=C++]{Source/Math/Matrix/Matrix.txt}
@@ -123,8 +129,6 @@ escapeinside={/*@}{@*/}}
             \lstinputlisting[language=C++]{Source/Math/NumberThoery/square_roots_in_zq.txt}
         \subsubsection{Miller and Pollard}
             \lstinputlisting[language=C++]{Source/Math/NumberThoery/p_rho.txt}
-        \subsubsection{Get prime in range}
-            \lstinputlisting[language=C++]{Source/Math/NumberThoery/getPrimeInRange.txt}
         \subsubsection{Mod Equation}
              \lstinputlisting[language=C++]{Source/Math/NumberThoery/MEquation.txt}
     \subsection{Fraction}
@@ -141,9 +145,6 @@ escapeinside={/*@}{@*/}}
          \lstinputlisting[language=C++]{Source/Math/Fraction/gauss_sum.cpp}
     \subsection{Linear Equaton}
         \subsubsection{Xor Equation}
-             1 1 0 0 = 0 (here when r = 0, i = 0)\\
-             0 0 1 0 = 1 (here when r = 1, i = 2)\\
-             0 0 0 1 = 1 (here when r = 2, i = 3)\\
             \lstinputlisting[language=C++]{Source/Math/xorEquation.txt}
             be carefully when use long long and int
             \lstinputlisting[language=C++]{Source/Math/xorEquation_bit.txt}
@@ -164,12 +165,42 @@ escapeinside={/*@}{@*/}}
         \lstinputlisting[language=C++]{Source/Math/nim_mult.txt}
     \subsection{FFT}
         \lstinputlisting[language=C++]{Source/Math/FFT.txt}
-\section{Geometry}
+    \subsection{Romberg}
+        \lstinputlisting[language=C++]{Source/Romberg.cpp}
+\section{Computational Geometry}
+\subsection{Formula of Geometry}
+\lstinputlisting[language=C++]{Source/Geometry_formula.cpp}
+\subsection{Float Method}
+\lstinputlisting[language=C++]{Source/Geometry_float.cpp}
+\subsection{Int Method}
+\lstinputlisting[language=C++]{Source/Geometry_integer.cpp}
+\subsection{Polygon Method}
+\lstinputlisting[language=C++]{Source/Polygon.cpp}
+\subsection{Circles Method}
+\lstinputlisting[language=C++]{Source/Circle.cpp}
+\subsection{Scan Line}
+\lstinputlisting[language=C++]{Source/Scan_Line.cpp}
+\subsection{Spherical Distance}
+\lstinputlisting[language=C++]{Source/Spherical_Distance.cpp}
+\subsection{Minimum Circle Cover}
+\lstinputlisting[language=C++]{Source/Minimum_Circle_Cover.cpp}
+\subsection{N-D Volume}
+\lstinputlisting[language=C++]{Source/N-D_Volume.cpp}
+\subsection{Perimeter Of Circles}
+\lstinputlisting[language=C++]{Source/Discs.cpp}
+\subsection{Center of Triangle}
+\lstinputlisting[language=C++]{Source/Triangle.cpp}
+\subsection{3D Vector Projection}
+\lstinputlisting[language=C++]{Source/Space_Vector_Projection.cpp}
 \subsection{3D Convexhull}
 \lstinputlisting[language=C++]{Source/Geometry/convexhull-center.cpp}
 \subsection{2D Convexhull}
 \lstinputlisting[language=C++]{Source/Geometry/graham.cpp}
-\subsection{Points in triangle}
-\lstinputlisting[language=C++]{Source/Geometry/graham.cpp}
+\subsection{Points in Triangle}
+\lstinputlisting[language=C++]{Source/Geometry/hdu4353.cpp}
+\subsection{N Dimension Cut}
+\lstinputlisting[language=C++]{Source/Ndimension-cut.cpp}
+\section{Sevenzero Geometry}
+\lstinputlisting[language=C++]{Source/sevenzero.cpp}
 \end{CJK*}
 \end{document}

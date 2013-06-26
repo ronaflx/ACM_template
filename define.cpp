@@ -10,4 +10,3 @@ template<class T> void string_reader(string s, vector<T>& vec){
 	istringstream sin(s);
 	copy(istream_iterator<T>(sin), istream_iterator<T>(), back_inserter(vec));
 }
-

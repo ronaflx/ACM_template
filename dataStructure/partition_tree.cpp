@@ -4,8 +4,7 @@ private:
     static const int N = 100005;
     static const int DEPTH = 20;
     int tree[DEPTH][N * 4], sorted[N];
-    int toleft[DEPTH][N * 4];
-    int n;
+    int toleft[DEPTH][N * 4], n;
 public:
     void initialize(int n, int *array) {
         this->n = n;
@@ -50,4 +49,3 @@ public:
         }
     }
 };
-
