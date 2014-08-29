@@ -85,37 +85,6 @@ class KDTree {
     return dx * dx + dy * dy;
   }
 
-  long long TwoDDistance(const key_type& p, const Boundary& b) const {
-    long long lower_x = std::get<0>(b.lower_boundary);
-    long long lower_y = std::get<1>(b.lower_boundary);
-    long long upper_x = std::get<0>(b.upper_boundary);
-    long long upper_y = std::get<1>(b.upper_boundary);
-    long long x = std::get<0>(p);
-    long long y = std::get<1>(p);
-    if (x < lower_x) {
-      if (y < lower_y)
-        return pdistance(Point(lower_x, lower_y), Point(x, y));
-      else if (y > upper_y)
-        return pdistance(Point(lower_x, upper_y), Point(x, y));
-      else
-        return pdistance(Point(lower_x, y), Point(x, y));
-    } else if (x > upper_x) {
-      if (y < lower_y)
-        return pdistance(Point(upper_x, lower_y), Point(x, y));
-      else if (y > upper_y)
-        return pdistance(Point(upper_x, upper_y), Point(x, y));
-      else
-        return pdistance(Point(upper_x, y), Point(x, y));
-    } else {
-      if (y < lower_y)
-        return pdistance(Point(x, lower_y), Point(x, y));
-      else if (y > upper_y)
-        return pdistance(Point(x, upper_y), Point(x, y));
-      else
-        return 0;
-    }
-  }
-
   template <typename Iter>
   void BuildInternal(Iter first, Iter second, int node);
 
