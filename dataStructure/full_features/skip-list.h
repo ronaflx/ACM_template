@@ -30,12 +30,14 @@ class SkipList {
         head_(ConstructNode(0)),
         max_level_(1),
         size_(0) {}
+  ~SkipList();
 
   iterator begin();
   iterator end();
   const_iterator begin() const;
   const_iterator end() const;
 
+  void clear();
   void insert(const_reference key);
   void erase(const_reference key);
   size_type size() const;
@@ -67,7 +69,7 @@ class SkipList {
   inline void DestroyNode(Node* node) {
     size_--;
     alloc_.destroy(node);
-    alloc_.dellocate(node, 1);
+    alloc_.deallocate(node, 1);
   }
 
   // prev[i] record the last element small than key on ith level.
@@ -193,6 +195,12 @@ class SkipList<KeyType, Comp, Alloc>::ConstIterator
 
 // *** Public function. ***
 template <typename KeyType, typename Comp, typename Alloc>
+SkipList<KeyType, Comp, Alloc>::~SkipList() {
+  clear();
+  DestroyNode(head_);
+}
+
+template <typename KeyType, typename Comp, typename Alloc>
 typename SkipList<KeyType, Comp, Alloc>::iterator
 SkipList<KeyType, Comp, Alloc>::begin() {
   return iterator(this, head_->next_[0]);
@@ -214,6 +222,18 @@ template <typename KeyType, typename Comp, typename Alloc>
 typename SkipList<KeyType, Comp, Alloc>::const_iterator
 SkipList<KeyType, Comp, Alloc>::end() const {
   return iterator(this, nullptr);
+}
+
+template <typename KeyType, typename Comp, typename Alloc>
+void SkipList<KeyType, Comp, Alloc>::clear() {
+  while (head_->next_[0] != nullptr) {
+    Node* to_erase = head_->next_[0];
+    for (int i = 0; i < max_level_; i++) {
+      head_->next_[i] = to_erase->next_[i];
+    }
+    DestroyNode(to_erase);
+  }
+  max_level_ = 1;
 }
 
 template <typename KeyType, typename Comp, typename Alloc>
